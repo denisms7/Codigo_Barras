@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h2 class="my-4">Movimentação de Estoque ({{ tipo|title }})</h2>
+<h2 class="my-4">Estoque</h2>
 
 {% include "alert.html" %}
 
@@ -27,7 +27,6 @@
       <th>Produto</th>
       <th>Código</th>
       <th>Qtd</th>
-      <th>Tipo</th>
       <th>Ação</th>
     </tr>
   </thead>
@@ -37,7 +36,6 @@
       <td>{{ item.produto.nome }}</td>
       <td>{{ item.produto.codigo_barras }}</td>
       <td>{{ item.quantidade }}</td>
-      <td>{{ item.tipo }}</td>
       <td>
         <form method="post" action="{% url 'remover_item' index=forloop.counter0 %}">
           {% csrf_token %}
