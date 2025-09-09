@@ -63,6 +63,7 @@ class LeituraCodigoView(View):
 
 
 class FinalizarMovimentacaoView(View):
+
     def post(self, request, tipo="entrada", *args, **kwargs):
         movimentos = request.session.get("movimentos", [])
         for m in movimentos:
@@ -93,6 +94,7 @@ class FinalizarMovimentacaoView(View):
 
 
 class RemoverItemView(View):
+
     def post(self, request, index, tipo="entrada", *args, **kwargs):
         movimentos = request.session.get("movimentos", [])
         if 0 <= index < len(movimentos):
@@ -101,8 +103,10 @@ class RemoverItemView(View):
             request.session.modified = True
             messages.success(request, "Item removido da lista.")
         return redirect("leitura_codigo", tipo=tipo)
-    
+
+
 class LimparMovimentosView(View):
+
     def post(self, request, tipo="entrada", *args, **kwargs):
         request.session["movimentos"] = []
         request.session.modified = True
