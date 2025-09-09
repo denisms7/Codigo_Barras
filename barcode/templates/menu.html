@@ -3,12 +3,8 @@
 {% block content %}
 <div class="container mt-5">
 
-    <a href="{% url 'leitura_codigo' 'entrada' %}" class="btn btn-primary">
-        Ir para Leitura (Entrada)
-    </a>
-
-    <a href="{% url 'leitura_codigo' 'saida' %}" class="btn btn-primary">
-        Ir para Leitura (Saída)
+    <a href="{% url 'leitura_codigo' %}" class="btn btn-primary">
+        Ir para Leitura
     </a>
 
     <a href="/admin/barcode/produto/add/" class="btn btn-primary">

@@ -10,7 +10,7 @@
 <form method="post" class="row mb-3">
   {% csrf_token %}
   <div class="col-9 col-sm-9 col-md-8 mb-3">
-    {% render_field form.codigo class="form-control" placeholder="Codigo de Barras (UPC)" %}
+    {% render_field form.codigo class="form-control" autofocus="autofocus" autocomplete="off" placeholder="Codigo de Barras (UPC)" %}
   </div>
   <div class="col-3 col-sm-3 col-md-2 mb-3">
     {% render_field form.quantidade class="form-control text-center" placeholder="Qnt" %}
@@ -39,7 +39,7 @@
       <td>{{ item.quantidade }}</td>
       <td>{{ item.tipo }}</td>
       <td>
-        <form method="post" action="{% url 'remover_item' index=forloop.counter0 tipo='finalizar' %}">
+        <form method="post" action="{% url 'remover_item' index=forloop.counter0 %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-sm btn-danger">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -54,12 +54,12 @@
 </table>
 
 <div  class="d-flex gap-2">
-  <form method="post" action="{% url 'finalizar_movimentacao' tipo %}">
+  <form method="post" action="{% url 'finalizar_movimentacao' %}">
     {% csrf_token %}
       <button type="submit" class="btn btn-success">Finalizar</button>
   </form>
 
-  <form method="post" action="{% url 'limpar_movimentos' tipo %}" class="d-inline">
+  <form method="post" action="{% url 'limpar_movimentos' %}" class="d-inline">
     {% csrf_token %}
     <button type="submit" class="btn btn-warning">
       Limpar Produtos
