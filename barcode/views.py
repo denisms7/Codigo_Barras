@@ -13,7 +13,7 @@ class Menu(TemplateView):
 class LeituraCodigoView(View):
     template_name = "leitura.html"
 
-    def get(self, request, tipo="entrada", *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         form = BarcodeForm()
         movimentos = request.session.get("movimentos", [])
 
