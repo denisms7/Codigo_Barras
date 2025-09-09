@@ -1,0 +1,34 @@
+{% if messages %}
+<div style="position: fixed; top: 20px; right: 20px; z-index: 1050;">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow" role="alert">
+            {{ message|linebreaksbr }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="progress" style="height: 3px; margin-top: 5px;">
+                <div class="progress-bar bg-{{ message.tags }}" style="width: 100%; transition: width 5s linear;"></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            const progressBar = alert.querySelector('.progress-bar');
+
+            // Inicia a animação da barra (de 100% até 0%)
+            setTimeout(() => {
+                if (progressBar) progressBar.style.width = '0%';
+            }, 100);
+
+            // Fecha o alerta após 10s
+            setTimeout(() => {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                setTimeout(() => alert.remove(), 500); 
+            }, 5000);
+        });
+    });
+</script>
+{% endif %}
