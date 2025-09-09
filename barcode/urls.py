@@ -4,7 +4,9 @@ from . import views
 
 
 urlpatterns = [
-    path("estoque/<str:tipo>/", views.leitura_codigo, name="leitura_codigo"),
-    path("estoque/finalizar/<str:tipo>/", views.finalizar_movimentacao, name="finalizar_movimentacao"),
-    path("estoque/remover/<int:index>/<str:tipo>/", views.remover_item, name="remover_item"),
+    path("", views.Menu.as_view(), name="home"),
+    path("leitura/<str:tipo>/", views.LeituraCodigoView.as_view(), name="leitura_codigo"),
+    path("finalizar/<str:tipo>/", views.FinalizarMovimentacaoView.as_view(), name="finalizar_movimentacao"),
+    path("remover/<int:index>/<str:tipo>/", views.RemoverItemView.as_view(), name="remover_item"),
+    path("limpar/<str:tipo>/", views.LimparMovimentosView.as_view(), name="limpar_movimentos"),
 ]

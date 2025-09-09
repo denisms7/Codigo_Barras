@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <a href="{% url 'leitura_codigo' 'entrada' %}" class="btn btn-primary">
+        Ir para Leitura (Entrada)
+    </a>
+
+    <a href="{% url 'leitura_codigo' 'saida' %}" class="btn btn-secondary">
+        Ir para Leitura (Saída)
+    </a>
+
+</div>
+{% endblock content %}
